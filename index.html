@@ -437,53 +437,74 @@
       font-size: 14px;
     }
 
- @media (max-width: 640px) {
-  section {
-    padding: 24px 0;
-  }
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .grid-3,
+      .grid-4,
+      .cta-layout {
+        grid-template-columns: 1fr;
+      }
 
-  .section-title {
-    font-size: 28px;
-  }
+      .nav {
+        display: none;
+      }
 
-  .section-text,
-  .lead {
-    font-size: 16px;
-  }
+      .hero {
+        padding-top: 32px;
+      }
 
-  .result-card,
-  .step-card,
-  .price-card,
-  .cta-card {
-    padding: 18px;
-  }
+      h1 {
+        font-size: 42px;
+      }
+    }
 
-  .case-top {
-    padding: 12px;
-  }
+    @media (max-width: 640px) {
+      section {
+        padding: 24px 0;
+      }
 
-  .case-top h3 {
-    font-size: 20px;
-  }
+      .section-title {
+        font-size: 28px;
+      }
 
-  .case-frame {
-    padding: 10px;
-  }
+      .section-text,
+      .lead {
+        font-size: 16px;
+      }
 
-  .case-content {
-    padding: 14px 14px 16px;
-  }
+      .result-card,
+      .step-card,
+      .price-card,
+      .cta-card {
+        padding: 18px;
+      }
 
-  .case-content p,
-  .case-meta div {
-    font-size: 14px;
-  }
+      .case-top {
+        padding: 12px;
+      }
 
-  .tag {
-    font-size: 11px;
-    padding: 6px 9px;
-  }
-}
+      .case-top h3 {
+        font-size: 20px;
+      }
+
+      .case-frame {
+        padding: 10px;
+      }
+
+      .case-content {
+        padding: 14px 14px 16px;
+      }
+
+      .case-content p,
+      .case-meta div {
+        font-size: 14px;
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 6px 9px;
+      }
+    }
   </style>
 </head>
 <body>
