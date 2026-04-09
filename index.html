@@ -524,7 +524,7 @@
     <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">Reels / Ads / YouTube</div>
+      <div class="eyebrow">Reels / Shorts / YouTube</div>
 
       <h1>Стабильный контент без постоянного контроля</h1>
 
@@ -601,7 +601,7 @@
 
             <div class="case-frame" style="background-image:url('img/case-1-cover.jpg');">
               <video controls playsinline preload="metadata" poster="img/case-1-cover.jpg">
-                <source src="scetchbook1.mp4" type="video/mp4" />
+                <source src="sketchbook1.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает видео.
               </video>
             </div>
@@ -795,8 +795,8 @@
 
               <div class="actions" style="margin-top: 20px;">
                 <a class="btn primary" href="https://t.me/yourname" target="_blank" rel="noopener">Telegram</a>
-                <a class="btn" href="mailto:mail@example.com">Email</a>
-                <a class="btn" href="https://wa.me/70000000000" target="_blank" rel="noopener">Мессенджер</a>
+                <a class="btn" href="deftbuncase@gmail.com">Email</a>
+                <a class="btn" href="https://t.me/maximovreels?direct" target="_blank" rel="noopener">Мессенджер</a>
               </div>
             </div>
 
@@ -808,7 +808,7 @@
 
               <a class="contact-item" href="mailto:mail@example.com">
                 <strong>Email</strong>
-                <span>mail@example.com</span>
+                <span>deftbuncase@gmail.com</span>
               </a>
 
               <a class="contact-item" href="https://wa.me/70000000000" target="_blank" rel="noopener">
@@ -827,5 +827,19 @@
       © 2026 Максим. Монтаж видео для брендов, агентств и личных брендов.
     </div>
   </footer>
+ <script>
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach((video) => {
+      video.addEventListener('play', () => {
+        videos.forEach((otherVideo) => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+          }
+        });
+      });
+    });
+  </script>
+  
 </body>
 </html>
