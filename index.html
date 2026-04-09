@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Максим — видео и визуальный контент</title>
+  <title>Монтаж видео для брендов, агентств и личных брендов</title>
   <meta
     name="description"
-    content="Портфолио: услуги, кейсы, процесс работы и контакты."
+    content="Reels, ads и YouTube для брендов, агентств и личных брендов. Понятный процесс, релевантные кейсы и монтаж под бизнес-задачу."
   />
   <style>
     :root {
@@ -21,7 +21,6 @@
       --accent-2: #f6800e;
       --accent-soft: rgba(247, 97, 14, 0.14);
       --beige: #e4d2c0;
-      --success: #ffb27d;
       --max: 1160px;
       --radius: 22px;
       --shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
@@ -46,17 +45,15 @@
       line-height: 1.6;
     }
 
-    img,
-    video {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      border-radius: 18px;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
     }
 
     .wrap {
@@ -102,12 +99,12 @@
     }
 
     .hero {
-      padding: 56px 0 28px;
+      padding: 56px 0 24px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
       align-items: center;
     }
@@ -127,16 +124,16 @@
 
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(36px, 6vw, 68px);
+      font-size: clamp(34px, 5.6vw, 64px);
       line-height: 1.02;
       letter-spacing: -0.03em;
     }
 
     .lead {
-      margin: 0 0 24px;
+      margin: 0 0 22px;
       color: var(--muted);
       font-size: 18px;
-      max-width: 680px;
+      max-width: 700px;
     }
 
     .hero-points {
@@ -172,7 +169,6 @@
       color: var(--text);
       font-weight: 700;
       transition: 0.2s ease;
-      box-shadow: none;
     }
 
     .btn:hover {
@@ -187,12 +183,7 @@
       box-shadow: 0 12px 26px rgba(247, 97, 14, 0.22);
     }
 
-    .btn.primary:hover {
-      filter: brightness(1.03);
-    }
-
     .hero-card {
-      position: relative;
       padding: 18px;
       border-radius: 28px;
       background:
@@ -202,25 +193,20 @@
       box-shadow: var(--shadow);
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 28px;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at top right, rgba(247, 97, 14, 0.18), transparent 26%);
+    .hero-card img {
+      width: 100%;
+      border-radius: 20px;
     }
 
     section {
-      padding: 32px 0;
+      padding: 28px 0;
     }
 
     .section-head {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .section-kicker {
@@ -233,7 +219,7 @@
 
     .section-title {
       margin: 0;
-      font-size: 32px;
+      font-size: 30px;
       line-height: 1.1;
     }
 
@@ -246,6 +232,12 @@
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -262,74 +254,104 @@
       box-shadow: var(--shadow);
     }
 
-    .service-card {
+    .result-card,
+    .fit-card,
+    .step-card,
+    .price-card,
+    .cta-card {
       padding: 22px;
     }
 
-    .service-card h3,
-    .case-card h3,
+    .result-card h3,
+    .fit-card h3,
     .step-card h3,
+    .price-card h3,
+    .case-card h3,
     .cta-card h3 {
       margin: 0 0 10px;
       font-size: 22px;
       line-height: 1.2;
     }
 
-    .service-card p,
-    .case-card p,
+    .result-card p,
+    .fit-card p,
     .step-card p,
-    .cta-card p {
+    .price-card p,
+    .case-card p,
+    .cta-card p,
+    li {
       margin: 0;
       color: var(--muted);
-    }
-
-    .price {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      color: #ffd4bb;
-      font-weight: 800;
-      font-size: 14px;
-      border: 1px solid rgba(247, 97, 14, 0.28);
     }
 
     .case-card {
       overflow: hidden;
     }
 
-    .case-media {
-      aspect-ratio: 16 / 11;
-      background: #191512;
+    .case-top {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--beige);
+      font-size: 12px;
+    }
+
+    .case-frame {
+      aspect-ratio: 9 / 16;
+      background: #120f0d;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .case-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #120f0d;
     }
 
     .case-content {
       padding: 18px 18px 20px;
     }
 
-    .case-tag {
-      display: inline-flex;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      color: var(--beige);
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
-
-    .result {
+    .case-meta {
+      display: grid;
+      gap: 10px;
       margin-top: 14px;
-      color: #ffc299;
-      font-weight: 700;
-      font-size: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
     }
 
-    .step-card {
-      padding: 20px;
-      position: relative;
+    .case-meta div strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      padding-left: 18px;
+      margin: 12px 0 0;
     }
 
     .step-number {
@@ -344,8 +366,25 @@
       font-weight: 900;
     }
 
-    .cta-card {
-      padding: 26px;
+    .price {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: #ffd4bb;
+      font-weight: 800;
+      font-size: 14px;
+      border: 1px solid rgba(247, 97, 14, 0.28);
+    }
+
+    .small-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #bca691;
+    }
+
+    .cta-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 22px;
@@ -382,11 +421,12 @@
       font-size: 14px;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1024px) {
       .hero-grid,
-      .cta-card,
       .grid-3,
-      .grid-4 {
+      .grid-2,
+      .grid-4,
+      .cta-layout {
         grid-template-columns: 1fr;
       }
 
@@ -409,9 +449,10 @@
     <div class="wrap topbar-inner">
       <a href="#" class="brand">MAXIM VIDEO</a>
       <nav class="nav">
-        <a href="#services">Услуги</a>
         <a href="#cases">Кейсы</a>
+        <a href="#fit">Кому подхожу</a>
         <a href="#process">Процесс</a>
+        <a href="#pricing">Форматы</a>
         <a href="#contacts">Контакты</a>
       </nav>
     </div>
@@ -421,70 +462,58 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Видео / монтаж / визуальная подача</div>
-          <h1>Ко мне приходят, когда нужен контент, который выглядит современно и продаёт доверие.</h1>
+          <div class="eyebrow">Reels / Ads / YouTube</div>
+          <h1>Монтаж видео для брендов, агентств и личных брендов</h1>
           <p class="lead">
-            Помогаю экспертам, брендам и проектам с видео, визуальной подачей
-            и контентом, который не стыдно показывать клиентам, партнёрам и аудитории.
+            Помогаю выпускать контент стабильно, собирать ролики под удержание
+            и делать видео, которые выглядят профессионально и работают под задачу:
+            продажи, упаковка бренда, реклама или регулярный контент.
           </p>
 
           <div class="hero-points">
-            <div class="chip">Нужно красиво упаковать себя или продукт</div>
-            <div class="chip">Нужны короткие видео для соцсетей и рекламы</div>
-            <div class="chip">Нужен аккуратный визуал без перегруза</div>
-            <div class="chip">Нужно быстро и по понятному процессу</div>
+            <div class="chip">Reels, shorts, ads, YouTube</div>
+            <div class="chip">Понятный процесс без хаоса</div>
+            <div class="chip">Адаптация под площадки</div>
           </div>
 
           <div class="actions">
-            <a class="btn primary" href="#contacts">Обсудить задачу</a>
-            <a class="btn" href="#cases">Смотреть кейсы</a>
+            <a class="btn primary" href="#cases">Посмотреть кейсы</a>
+            <a class="btn" href="#contacts">Обсудить задачу</a>
           </div>
         </div>
 
         <div class="hero-card">
-          <!-- ЗАМЕНИ avatar.jpg на свовё фото -->
-          <img src="avatar.jpg" alt="Avatar" />
+          <!-- ЗАМЕНИ на своё фото -->
+          <img src="img/avatar.jpg" alt="Фото Максима" />
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section>
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">Услуги</div>
-          <h2 class="section-title">Что можно заказать</h2>
-          <p class="section-text">
-            Ниже три базовые услуги. Названия можно оставить как есть
-            или заменить под себя.
-          </p>
-        </div>
-
         <div class="grid-3">
-          <article class="card service-card">
-            <h3>Монтаж коротких видео</h3>
+          <article class="card result-card">
+            <h3>Контент без хаоса</h3>
             <p>
-              Reels, Shorts, вертикальные ролики, динамичный монтаж,
-              титры, музыка, чистая подача и адаптация под соцсети.
+              Беру на себя монтаж, структуру, титры и сборку роликов,
+              чтобы контент выходил регулярно, а не от случая к случаю.
             </p>
-            <div class="price">от 7 000 ₽</div>
           </article>
 
-          <article class="card service-card">
-            <h3>Контент-съёмка</h3>
+          <article class="card result-card">
+            <h3>Видео под удержание</h3>
             <p>
-              Съёмка материалов для личного бренда, продукта, экспертного блога,
-              запуска, карточек, сайта или соцсетей.
+              Работаю с темпом, акцентами, динамикой и подачей,
+              чтобы ролик смотрелся плотнее и удерживал внимание.
             </p>
-            <div class="price">от 12 000 ₽</div>
           </article>
 
-          <article class="card service-card">
-            <h3>Упаковка визуала</h3>
+          <article class="card result-card">
+            <h3>Подача уровня бренда</h3>
             <p>
-              Помогаю собрать целостный стиль: фото, видео, обложки,
-              подача контента и визуальное ощущение бренда.
+              Делаю ролики, которые выглядят собранно и профессионально:
+              для рекламы, личного бренда, продукта или агентской работы.
             </p>
-            <div class="price">от 15 000 ₽</div>
           </article>
         </div>
       </div>
@@ -494,60 +523,148 @@
       <div class="wrap">
         <div class="section-head">
           <div class="section-kicker">Кейсы</div>
-          <h2 class="section-title">Примеры работ</h2>
+          <h2 class="section-title">Релевантные примеры работ</h2>
           <p class="section-text">
-            Добавь сюда 3–6 своих лучших проектов. Лучше меньше, но сильнее.
+            Не просто красивые ролики, а примеры под конкретные задачи:
+            экспертный контент, реклама, агентский поток, YouTube и короткие форматы.
           </p>
         </div>
 
         <div class="grid-3">
           <article class="card case-card">
-            <div class="case-media">
-              <!-- ЗАМЕНИ case-1.jpg на свой файл -->
-              <img src="case-1.jpg" alt="Кейс 1" />
+            <div class="case-top">
+              <div class="case-tags">
+                <span class="tag">Личный бренд</span>
+                <span class="tag">Reels</span>
+              </div>
             </div>
-            <div class="case-content">
-              <div class="case-tag">Личный бренд</div>
-              <h3>Контент для эксперта</h3>
-              <p>
-                Собрал визуальную подачу и короткие ролики для соцсетей,
-                чтобы профиль выглядел дороже и понятнее для новой аудитории.
-              </p>
-              <div class="result">Результат: более цельный визуал и готовый контент-пакет</div>
-            </div>
-          </article>
 
-          <article class="card case-card">
-            <div class="case-media">
-              <!-- Можно оставить видео -->
-              <video controls playsinline preload="metadata" poster="case-2.jpg">
-                <source src="case-video-1.mp4" type="video/mp4" />
+            <div class="case-frame">
+              <video controls playsinline preload="metadata" poster="img/case-1-cover.jpg">
+                <source src="video/case-1.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
               </video>
             </div>
+
             <div class="case-content">
-              <div class="case-tag">Видео / реклама</div>
-              <h3>Короткий промо-ролик</h3>
+              <h3>Экспертный reels</h3>
               <p>
-                Смонтировал быстрый и чистый ролик для продукта:
-                акценты на сути, темпе и понятной подаче.
+                Короткий формат для личного бренда: плотная структура,
+                титры и ритм, чтобы ролик был понятным и современным.
               </p>
-              <div class="result">Результат: ролик для запуска, рекламы и размещения на сайте</div>
+
+              <div class="case-meta">
+                <div>
+                  <strong>Задача</strong>
+                  Упаковать экспертную мысль в короткий ролик без потери смысла.
+                </div>
+                <div>
+                  <strong>Результат</strong>
+                  Контент, который можно стабильно выпускать серией.
+                </div>
+              </div>
             </div>
           </article>
 
           <article class="card case-card">
-            <div class="case-media">
-              <img src="fromscratch.mp4" alt="Кейс 3" />
+            <div class="case-top">
+              <div class="case-tags">
+                <span class="tag">Бренд</span>
+                <span class="tag">Ads</span>
+              </div>
             </div>
+
+            <div class="case-frame">
+              <video controls playsinline preload="metadata" poster="img/case-2-cover.jpg">
+                <source src="promo1.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            </div>
+
             <div class="case-content">
-              <div class="case-tag">Бренд / соцсети</div>
-              <h3>Серия визуалов для проекта</h3>
+              <h3>Рекламный креатив</h3>
               <p>
-                Сделал набор фото и визуальных материалов, которые можно использовать
-                в постах, сторис, на лендинге и в презентациях.
+                Видео под performance-задачу: акцент на сути, чистой подаче
+                и адаптации под рекламное размещение.
               </p>
-              <div class="result">Результат: единая подача и готовые материалы под разные площадки</div>
+
+              <div class="case-meta">
+                <div>
+                  <strong>Задача</strong>
+                  Сделать ролик, который выглядит профессионально и быстро считывается.
+                </div>
+                <div>
+                  <strong>Результат</strong>
+                  Готовый креатив для рекламы, лендинга или соцсетей.
+                </div>
+              </div>
             </div>
+          </article>
+
+          <article class="card case-card">
+            <div class="case-top">
+              <div class="case-tags">
+                <span class="tag">Агентство</span>
+                <span class="tag">Shorts</span>
+              </div>
+            </div>
+
+            <div class="case-frame">
+              <video controls playsinline preload="metadata" poster="img/case-3-cover.jpg">
+                <source src="scetchbook1.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            </div>
+
+            <div class="case-content">
+              <h3>Потоковый монтаж</h3>
+              <p>
+                Формат для агентской или регулярной работы:
+                серия роликов в одном стиле с понятной системой правок.
+              </p>
+
+              <div class="case-meta">
+                <div>
+                  <strong>Задача</strong>
+                  Собирать контент регулярно и не тратить время на микроменеджмент.
+                </div>
+                <div>
+                  <strong>Результат</strong>
+                  Предсказуемый выпуск контента и единая визуальная подача.
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Кому подхожу</div>
+          <h2 class="section-title">Чтобы быстро понять, подходим ли мы друг другу</h2>
+        </div>
+
+        <div class="grid-2">
+          <article class="card fit-card">
+            <h3>Подходит, если вам нужно</h3>
+            <ul class="list">
+              <li>стабильно выпускать reels и shorts</li>
+              <li>делегировать монтаж без постоянного контроля</li>
+              <li>делать рекламные видео под бренд или performance</li>
+              <li>ускорить выпуск YouTube или контент-серий</li>
+              <li>закрыть монтаж в агентстве или продакшене</li>
+            </ul>
+          </article>
+
+          <article class="card fit-card">
+            <h3>Не подойдёт, если вам нужен</h3>
+            <ul class="list">
+              <li>самый дешёвый монтаж без цели и системы</li>
+              <li>разовый хаотичный формат без понятной задачи</li>
+              <li>подход “сделай красиво” без смысла и результата</li>
+            </ul>
           </article>
         </div>
       </div>
@@ -556,86 +673,133 @@
     <section id="process">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-kicker">Процесс работы</div>
-          <h2 class="section-title">Как всё происходит</h2>
+          <div class="section-kicker">Процесс</div>
+          <h2 class="section-title">Как проходит работа</h2>
           <p class="section-text">
-            Это блок, который снимает лишние вопросы и делает тебя понятнее для клиента.
+            Коротко и понятно, чтобы у клиента не было ощущения хаоса.
           </p>
         </div>
 
         <div class="grid-4">
           <article class="card step-card">
             <div class="step-number">01</div>
-            <h3>Созвон / бриф</h3>
+            <h3>Задача и формат</h3>
             <p>
-              Обсуждаем задачу, формат, сроки, площадки размещения и результат,
-              который нужен в итоге.
+              Вы присылаете задачу, примеры, референсы и рассказываете,
+              где видео будет использоваться.
             </p>
           </article>
 
           <article class="card step-card">
             <div class="step-number">02</div>
-            <h3>Подготовка</h3>
+            <h3>Материалы</h3>
             <p>
-              Согласовываем референсы, стиль, сценарную рамку,
-              список материалов и удобный план работы.
+              Получаю исходники, комментарии по стилю и договорённости
+              по срокам, правкам и формату отдачи.
             </p>
           </article>
 
           <article class="card step-card">
             <div class="step-number">03</div>
-            <h3>Производство</h3>
+            <h3>Монтаж и правки</h3>
             <p>
-              Съёмка, монтаж, отбор, сборка визуалов и оформление
-              в нужный формат под задачу.
+              Собираю первый вариант, после чего вы даёте правки
+              в удобном формате без лишней путаницы.
             </p>
           </article>
 
           <article class="card step-card">
             <div class="step-number">04</div>
-            <h3>Передача результата</h3>
+            <h3>Финал</h3>
             <p>
-              Отдаю готовые материалы, вносим финальные правки
-              и ты получаешь контент, который можно сразу использовать.
+              Передаю готовые ролики в нужных форматах и,
+              если нужно, адаптирую под площадки.
             </p>
           </article>
         </div>
       </div>
     </section>
 
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Форматы и стоимость</div>
+          <h2 class="section-title">Понятная рамка по цене</h2>
+          <p class="section-text">
+            Точную стоимость лучше считать по задаче, но базовые форматы можно показать сразу.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card price-card">
+            <h3>Reels / Shorts</h3>
+            <p>
+              Короткие вертикальные ролики для экспертов, брендов,
+              соцсетей, запусков и контент-серий.
+            </p>
+            <div class="price">от 7 000 ₽</div>
+          </article>
+
+          <article class="card price-card">
+            <h3>YouTube / интервью</h3>
+            <p>
+              Монтаж длинных форматов, сокращение материала,
+              структурирование и чистая подача без лишнего шума.
+            </p>
+            <div class="price">от 12 000 ₽</div>
+          </article>
+
+          <article class="card price-card">
+            <h3>Ads / креативы / пакетная работа</h3>
+            <p>
+              Рекламные ролики, адаптации под площадки,
+              потоковый формат для команд, агентств и брендов.
+            </p>
+            <div class="price">от 15 000 ₽</div>
+          </article>
+        </div>
+
+        <p class="small-note">
+          Стоимость зависит от объёма исходников, срочности, количества роликов и сложности задачи.
+        </p>
+      </div>
+    </section>
+
     <section id="contacts">
       <div class="wrap">
         <div class="card cta-card">
-          <div>
-            <div class="section-kicker">CTA</div>
-            <h3>Есть задача или хочешь обсудить формат?</h3>
-            <p>
-              Напиши мне в удобный канал. Можно сразу коротко прислать:
-              что нужно сделать, к какому сроку и где это будет использоваться.
-            </p>
+          <div class="cta-layout">
+            <div>
+              <div class="section-kicker">CTA</div>
+              <h3>Пришлите задачу или пример ролика</h3>
+              <p>
+                Напишите, что нужно сделать, в каком формате и к какому сроку.
+                Я скажу, как лучше это собрать и дам ориентир по срокам и стоимости.
+              </p>
 
-            <div class="actions" style="margin-top: 20px;">
-              <a class="btn primary" href="https://t.me/yourname" target="_blank" rel="noopener">Telegram</a>
-              <a class="btn" href="mailto:mail@example.com">Email</a>
-              <a class="btn" href="https://wa.me/70000000000" target="_blank" rel="noopener">Мессенджер</a>
+              <div class="actions" style="margin-top: 20px;">
+                <a class="btn primary" href="https://t.me/yourname" target="_blank" rel="noopener">Telegram</a>
+                <a class="btn" href="mailto:mail@example.com">Email</a>
+                <a class="btn" href="https://wa.me/70000000000" target="_blank" rel="noopener">Мессенджер</a>
+              </div>
             </div>
-          </div>
 
-          <div class="contact-list">
-            <a class="contact-item" href="https://t.me/yourname" target="_blank" rel="noopener">
-              <strong>Telegram</strong>
-              <span>@yourname</span>
-            </a>
+            <div class="contact-list">
+              <a class="contact-item" href="https://t.me/yourname" target="_blank" rel="noopener">
+                <strong>Telegram</strong>
+                <span>@yourname</span>
+              </a>
 
-            <a class="contact-item" href="mailto:mail@example.com">
-              <strong>Email</strong>
-              <span>mail@example.com</span>
-            </a>
+              <a class="contact-item" href="mailto:mail@example.com">
+                <strong>Email</strong>
+                <span>mail@example.com</span>
+              </a>
 
-            <a class="contact-item" href="https://wa.me/70000000000" target="_blank" rel="noopener">
-              <strong>Мессенджер</strong>
-              <span>WhatsApp / любой удобный канал</span>
-            </a>
+              <a class="contact-item" href="https://wa.me/70000000000" target="_blank" rel="noopener">
+                <strong>Мессенджер</strong>
+                <span>WhatsApp или другой удобный канал</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -644,7 +808,7 @@
 
   <footer>
     <div class="wrap">
-      © 2026 Максим. Видео, визуал и контент.
+      © 2026 Максим. Монтаж видео для брендов, агентств и личных брендов.
     </div>
   </footer>
 </body>
