@@ -6,7 +6,7 @@
   <title>Монтаж для экспертов, компаний и личных брендов</title>
   <meta
     name="description"
-    content="Reels, ads и YouTube для брендов, агентств и личных брендов. Понятный процесс, релевантные кейсы и монтаж под бизнес-задачу."
+    content="Монтаж reels, ads и YouTube для экспертов, брендов и команд. Стабильный контент без постоянного контроля — с подачей уровня продакшна."
   />
   <style>
     :root {
@@ -133,7 +133,7 @@
       margin: 0 0 22px;
       color: var(--muted);
       font-size: 18px;
-      max-width: 700px;
+      max-width: 720px;
     }
 
     .hero-points {
@@ -235,12 +235,6 @@
       gap: 18px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -255,7 +249,6 @@
     }
 
     .result-card,
-    .fit-card,
     .step-card,
     .price-card,
     .cta-card {
@@ -263,7 +256,6 @@
     }
 
     .result-card h3,
-    .fit-card h3,
     .step-card h3,
     .price-card h3,
     .case-card h3,
@@ -274,12 +266,10 @@
     }
 
     .result-card p,
-    .fit-card p,
     .step-card p,
     .price-card p,
     .case-card p,
-    .cta-card p,
-    li {
+    .cta-card p {
       margin: 0;
       color: var(--muted);
     }
@@ -318,46 +308,66 @@
 
     .case-frame {
       aspect-ratio: 9 / 16;
-      background: #120f0d;
+      background-color: #120f0d;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 12px;
+      position: relative;
+    }
+
+    .case-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.12) 100%);
+      pointer-events: none;
     }
 
     .case-frame video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       border-radius: 18px;
       background: #120f0d;
+      position: relative;
+      z-index: 1;
     }
 
     .case-content {
       padding: 18px 18px 20px;
     }
 
+    .case-content p {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
     .case-meta {
       display: grid;
-      gap: 10px;
+      gap: 8px;
       margin-top: 14px;
       padding-top: 14px;
       border-top: 1px solid var(--line);
     }
 
-    .case-meta div strong {
-      display: block;
-      font-size: 13px;
-      color: var(--text);
-      margin-bottom: 4px;
+    .case-meta div {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
     }
 
-    .list {
-      display: grid;
-      gap: 10px;
-      padding-left: 18px;
-      margin: 12px 0 0;
+    .case-meta div strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 3px;
     }
 
     .step-number {
@@ -430,7 +440,6 @@
     @media (max-width: 1024px) {
       .hero-grid,
       .grid-3,
-      .grid-2,
       .grid-4,
       .cta-layout {
         grid-template-columns: 1fr;
@@ -446,6 +455,54 @@
 
       h1 {
         font-size: 42px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 24px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-text,
+      .lead {
+        font-size: 16px;
+      }
+
+      .result-card,
+      .step-card,
+      .price-card,
+      .cta-card {
+        padding: 18px;
+      }
+
+      .case-top {
+        padding: 12px;
+      }
+
+      .case-top h3 {
+        font-size: 20px;
+      }
+
+      .case-frame {
+        padding: 10px;
+      }
+
+      .case-content {
+        padding: 14px 14px 16px;
+      }
+
+      .case-content p,
+      .case-meta div {
+        font-size: 14px;
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 6px 9px;
       }
     }
   </style>
@@ -468,10 +525,18 @@
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Reels / Ads / YouTube</div>
-          <h1>Монтаж для экспертов, компаний и личных брендов</h1>
+          <h1>Стабильный контент без постоянного контроля — с подачей уровня продакшна</h1>
           <p class="lead">
-            Помогаю выпускать качественный контент стабильно и без постоянного контроля.
+            Монтирую reels, ads и YouTube для экспертов, брендов и команд.
+            Вы снимаете и отправляете исходники — я возвращаю готовый контент,
+            который выглядит профессионально и выходит без хаоса.
           </p>
+
+          <div class="hero-points">
+            <div class="chip">Вы снимаете — я собираю в готовый ролик</div>
+            <div class="chip">Понятный процесс и правки без путаницы</div>
+            <div class="chip">Контент, который выглядит профессионально</div>
+          </div>
           
           <div class="actions">
             <a class="btn primary" href="#cases">Посмотреть кейсы</a>
@@ -489,23 +554,23 @@
       <div class="wrap">
         <div class="grid-3">
           <article class="card result-card">
-            <h3>Стабильный контент</h3>
+            <h3>Контент постоянно стопорится</h3>
             <p>
-            Чёткое соблюдение дедлайнов и оперативные правки.
+              Вы снимаете видео и отправляете исходники — я собираю из этого стабильный контент, готовый к публикации.
             </p>
           </article>
 
           <article class="card result-card">
-            <h3>Ощущение продакшна</h3>
+            <h3>Монтаж требует слишком много вашего участия</h3>
             <p>
-              Превращаю сырые исходники в собранный и профессиональный контент.
+              Без постоянного контроля и бесконечных объяснений: вы отдаёте материал и получаете понятный готовый результат.
             </p>
           </article>
 
           <article class="card result-card">
-            <h3>Удержание внимания</h3>
+            <h3>Видео не дотягивает до уровня проекта</h3>
             <p>
-             Монтаж, который сопровождает мысль, а не перегружает зрителя. 
+              Превращаю сырые исходники в собранный контент с ощущением продакшна и профессиональной подачей.
             </p>
           </article>
         </div>
@@ -518,8 +583,7 @@
           <div class="section-kicker">Кейсы</div>
           <h2 class="section-title">Релевантные примеры работ</h2>
           <p class="section-text">
-            Не просто красивые ролики, а примеры под конкретные задачи:
-            экспертный контент, реклама, агентский поток, YouTube и короткие форматы.
+            Не просто красивые ролики, а понятные примеры под задачу: экспертный контент, имидж, реклама и короткие форматы.
           </p>
         </div>
 
@@ -533,7 +597,7 @@
               </div>
             </div>
 
-            <div class="case-frame">
+            <div class="case-frame" style="background-image:url('img/case-1-cover.jpg');">
               <video controls playsinline preload="metadata" poster="img/case-1-cover.jpg">
                 <source src="scetchbook1.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает видео.
@@ -542,18 +606,17 @@
 
             <div class="case-content">
               <p>
-                Короткий формат с монтажом в стиле sketchbook для эксперта.
-                Упаковка мысли, визуальные акценты и современная подача.
+                Короткий экспертный формат с чистой упаковкой мысли, визуальными акцентами и современной подачей.
               </p>
 
               <div class="case-meta">
                 <div>
                   <strong>Задача</strong>
-                  Разбить длинный разговорный исходник на структурные короткие ролики.
+                  Разбить длинный разговорный исходник на короткие ролики.
                 </div>
                 <div>
                   <strong>Результат</strong>
-                 Видео, которое удерживает внимание, делает мысль понятнее и визуально повышает ценность контента.
+                  Получился контент, который удерживает внимание и проще выпускать серией.
                 </div>
               </div>
             </div>
@@ -568,7 +631,7 @@
               </div>
             </div>
 
-            <div class="case-frame">
+            <div class="case-frame" style="background-image:url('img/case-2-cover.jpg');">
               <video controls playsinline preload="metadata" poster="img/case-2-cover.jpg">
                 <source src="promo1.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает видео.
@@ -577,18 +640,17 @@
 
             <div class="case-content">
               <p>
-               Собрал короткий ролик по готовым исходникам и референсу.
-               Выстроил кадры под музыку, усилил подачу крупной типографикой, анимацией и переходами.
+                Короткий ролик по готовым исходникам и референсу: музыка, типографика, анимация и плотный ритм.
               </p>
 
               <div class="case-meta">
                 <div>
                   <strong>Задача</strong>
-                  На основе готовых исходников и референса сделать динамичный ролик, который выглядит стильно.
+                  Сделать стильный ролик, который выглядит собранно и сильно.
                 </div>
                 <div>
                   <strong>Результат</strong>
-                  Получился короткий имиджевый ролик с плотным ритмом и цепляющей типографикой, который удерживает внимание и создаёт ощущение продакшна.
+                  Получился имиджевый ролик с ощущением продакшна и цепляющей подачей.
                 </div>
               </div>
             </div>
@@ -603,7 +665,7 @@
               </div>
             </div>
 
-            <div class="case-frame">
+            <div class="case-frame" style="background-image:url('img/case-3-cover.jpg');">
               <video controls playsinline preload="metadata" poster="img/case-3-cover.jpg">
                 <source src="montage2.mp4" type="video/mp4" />
                 Ваш браузер не поддерживает видео.
@@ -612,18 +674,17 @@
 
             <div class="case-content">
               <p>
-                Собрал короткий научный ролик из длинного исходника.
-                Выстроил хук, понятную мысль и завершение, а визуальное оформление сделал более лёгким для восприятия.
+                Короткий научный ролик из длинного исходника: хук, понятная мысль и визуальная подача без перегруза.
               </p>
 
               <div class="case-meta">
                 <div>
                   <strong>Задача</strong>
-                  Преобразовать длинное научное видео в короткий shorts, который цепляет с первых секунд, сохраняет суть и не перегружает зрителя сложной подачей.
+                  Сжать длинное видео в короткий shorts без потери смысла.
                 </div>
                 <div>
                   <strong>Результат</strong>
-                  Получился короткий ролик с ясной структурой и motion-дизайном, который помогает быстрее понять мысль, удерживает внимание и делает научный контент более доступным для широкой аудитории.
+                  Ролик стал понятнее, динамичнее и доступнее для широкой аудитории.
                 </div>
               </div>
             </div>
@@ -645,28 +706,25 @@
         <div class="grid-4">
           <article class="card step-card">
             <div class="step-number">01</div>
-            <h3>Задача и формат</h3>
+            <h3>Задача</h3>
             <p>
-              Вы присылаете задачу, примеры, референсы и рассказываете,
-              где видео будет использоваться.
+              Вы отправляете исходники, референсы и цель ролика.
             </p>
           </article>
 
           <article class="card step-card">
             <div class="step-number">02</div>
-            <h3>Материалы</h3>
+            <h3>Монтаж</h3>
             <p>
-              Получаю исходники, комментарии по стилю и договорённости
-              по срокам, правкам и формату отдачи.
+              Собираю первый вариант под формат, задачу и площадку.
             </p>
           </article>
 
           <article class="card step-card">
             <div class="step-number">03</div>
-            <h3>Монтаж и правки</h3>
+            <h3>Правки</h3>
             <p>
-              Собираю первый вариант, после чего вы даёте правки
-              в удобном формате без лишней путаницы.
+              Быстро вносим правки без путаницы и лишних кругов объяснений.
             </p>
           </article>
 
@@ -674,8 +732,7 @@
             <div class="step-number">04</div>
             <h3>Финал</h3>
             <p>
-              Передаю готовые ролики в нужных форматах и,
-              если нужно, адаптирую под площадки.
+              Отдаю готовый ролик и, если нужно, адаптации под площадки.
             </p>
           </article>
         </div>
@@ -722,7 +779,7 @@
         </div>
 
         <p class="small-note">
-          Стоимость зависит от объёма исходников, срочности, количества роликов и сложности задачи.
+          Стоимость зависит от объёма исходников, срочности, количества роликов и сложности задачи. Ориентир по срокам и стоимости даю после 2–3 уточнений.
         </p>
       </div>
     </section>
@@ -733,10 +790,9 @@
           <div class="cta-layout">
             <div>
               <div class="section-kicker">CTA</div>
-              <h3>Пришлите задачу или пример ролика</h3>
+              <h3>Пришлите 1–2 исходника или пример желаемого ролика</h3>
               <p>
-                Напишите, что нужно сделать, в каком формате и к какому сроку.
-                Я скажу, как лучше это собрать и дам ориентир по срокам и стоимости.
+                Напишите, что нужно сделать и к какому сроку. Я скажу, как лучше это собрать, и дам ориентир по срокам и стоимости.
               </p>
 
               <div class="actions" style="margin-top: 20px;">
