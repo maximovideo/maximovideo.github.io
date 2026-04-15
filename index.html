@@ -115,17 +115,26 @@
       padding: 56px 0 24px;
     }
 
-   .hero-grid {
+.hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: 40px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
   align-items: center;
 }
 
 .hero-card {
-  justify-self: end;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+    #211b17;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: var(--shadow);
+}
+
+.hero-card img {
   width: 100%;
-  max-width: 420px;
+  border-radius: 20px;
 }
     }
 
@@ -190,6 +199,81 @@
       font-weight: 700;
       transition: 0.2s ease;
     }
+
+    .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 20;
+}
+
+.contact-inline {
+  position: relative;
+  z-index: 21;
+}
+
+.contact-toggle {
+  cursor: pointer;
+}
+
+.contact-inline-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: 0.22s ease;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.contact-inline-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #221d19;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.contact-inline-btn:hover {
+  transform: translateY(-1px);
+  border-color: #5a4436;
+}
+
+@media (max-width: 640px) {
+  .contact-inline-menu {
+    flex-wrap: wrap;
+    max-width: 220px;
+  }
+
+  .contact-inline-btn {
+    min-width: 64px;
+    height: 40px;
+    font-size: 13px;
+  }
+}
 
     .contact-actions {
   display: flex;
@@ -687,7 +771,7 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         который выглядит дорого и выходит регулярно.
       </p>
 
-   <div class="actions contact-inline-wrap">
+  <div class="actions">
   <a class="btn primary" href="#cases">Посмотреть кейсы</a>
 
   <div class="contact-inline">
@@ -701,7 +785,6 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         href="https://t.me/maximovreels?direct"
         target="_blank"
         rel="noopener"
-        aria-label="Telegram"
       >
         TG
       </a>
@@ -710,7 +793,6 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         class="contact-inline-btn email-copy"
         type="button"
         data-email="deftbuncase@gmail.com"
-        aria-label="Скопировать email"
       >
         Email
       </button>
@@ -720,7 +802,6 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         href="https://vk.com/kvnwld"
         target="_blank"
         rel="noopener"
-        aria-label="VK"
       >
         VK
       </a>
@@ -1145,6 +1226,56 @@ document.querySelectorAll('.email-copy').forEach((button) => {
           button.textContent = originalText;
         }, 1500);
       }
+    });
+  });
+</script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleContactInline = document.getElementById('toggleContactInline');
+    const contactInlineMenu = document.getElementById('contactInlineMenu');
+
+    if (toggleContactInline && contactInlineMenu) {
+      toggleContactInline.addEventListener('click', (e) => {
+        e.stopPropagation();
+        contactInlineMenu.classList.toggle('is-open');
+      });
+
+      contactInlineMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      document.addEventListener('click', () => {
+        contactInlineMenu.classList.remove('is-open');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          contactInlineMenu.classList.remove('is-open');
+        }
+      });
+    }
+
+    document.querySelectorAll('.email-copy').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const email = button.dataset.email;
+        const originalText = button.textContent;
+
+        try {
+          await navigator.clipboard.writeText(email);
+          button.textContent = 'Скопировано';
+
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
+        } catch (error) {
+          button.textContent = 'Ошибка';
+
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
+        }
+      });
     });
   });
 </script>
