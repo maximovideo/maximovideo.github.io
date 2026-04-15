@@ -115,11 +115,18 @@
       padding: 56px 0 24px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
+   .hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-card {
+  justify-self: end;
+  width: 100%;
+  max-width: 420px;
+}
     }
 
     .eyebrow {
@@ -226,82 +233,70 @@
   cursor: pointer;
 }
 
-.contact-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 8, 7, 0.55);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 9999;
+.contact-inline-wrap {
+  align-items: flex-start;
 }
 
-.contact-popup.is-open {
+.contact-inline {
+  position: relative;
+}
+
+.contact-inline-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
   display: flex;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: 0.22s ease;
+  pointer-events: none;
+  z-index: 30;
 }
 
-.contact-popup-card {
-  width: min(100%, 360px);
-  background: linear-gradient(180deg, #241d19 0%, #1f1a16 100%);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 18px;
+.contact-inline-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-.contact-popup-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.contact-popup-head strong {
-  font-size: 18px;
-  color: var(--text);
-}
-
-.contact-popup-close {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.contact-popup-links {
-  display: grid;
-  gap: 10px;
-}
-
-.contact-popup-btn {
+.contact-inline-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
-  border-radius: 14px;
+  min-width: 68px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
   border: 1px solid var(--line);
   background: #221d19;
   color: var(--text);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   cursor: pointer;
   transition: 0.2s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
-.contact-popup-btn:hover {
+.contact-inline-btn:hover {
   transform: translateY(-1px);
   border-color: #5a4436;
+}
+
+@media (max-width: 640px) {
+  .contact-inline-menu {
+    flex-wrap: wrap;
+    max-width: 220px;
+  }
+
+  .contact-inline-btn {
+    min-width: 64px;
+    height: 40px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -692,43 +687,40 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         который выглядит дорого и выходит регулярно.
       </p>
 
-     <div class="actions">
+   <div class="actions contact-inline-wrap">
   <a class="btn primary" href="#cases">Посмотреть кейсы</a>
-  <button class="btn contact-toggle" type="button" id="openContactPopup">
-    Обсудить задачу
-  </button>
-</div>
 
-<div class="contact-popup" id="contactPopup">
-  <div class="contact-popup-card">
-    <div class="contact-popup-head">
-      <strong>Связаться</strong>
-      <button class="contact-popup-close" type="button" id="closeContactPopup">×</button>
-    </div>
+  <div class="contact-inline">
+    <button class="btn contact-toggle" type="button" id="toggleContactInline">
+      Обсудить задачу
+    </button>
 
-    <div class="contact-popup-links">
+    <div class="contact-inline-menu" id="contactInlineMenu">
       <a
-        class="contact-popup-btn"
+        class="contact-inline-btn"
         href="https://t.me/maximovreels?direct"
         target="_blank"
         rel="noopener"
+        aria-label="Telegram"
       >
-        Telegram
+        TG
       </a>
 
       <button
-        class="contact-popup-btn email-copy"
+        class="contact-inline-btn email-copy"
         type="button"
         data-email="deftbuncase@gmail.com"
+        aria-label="Скопировать email"
       >
         Email
       </button>
 
       <a
-        class="contact-popup-btn"
+        class="contact-inline-btn"
         href="https://vk.com/kvnwld"
         target="_blank"
         rel="noopener"
+        aria-label="VK"
       >
         VK
       </a>
@@ -1109,32 +1101,27 @@ document.querySelectorAll('.email-copy').forEach((button) => {
   </script>
 
   <script>
-  const contactPopup = document.getElementById('contactPopup');
-  const openContactPopup = document.getElementById('openContactPopup');
-  const closeContactPopup = document.getElementById('closeContactPopup');
+  <script>
+  const toggleContactInline = document.getElementById('toggleContactInline');
+  const contactInlineMenu = document.getElementById('contactInlineMenu');
 
-  if (openContactPopup && contactPopup && closeContactPopup) {
-    openContactPopup.addEventListener('click', () => {
-      contactPopup.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
+  if (toggleContactInline && contactInlineMenu) {
+    toggleContactInline.addEventListener('click', (e) => {
+      e.stopPropagation();
+      contactInlineMenu.classList.toggle('is-open');
     });
 
-    closeContactPopup.addEventListener('click', () => {
-      contactPopup.classList.remove('is-open');
-      document.body.style.overflow = '';
+    contactInlineMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
 
-    contactPopup.addEventListener('click', (e) => {
-      if (e.target === contactPopup) {
-        contactPopup.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
+    document.addEventListener('click', () => {
+      contactInlineMenu.classList.remove('is-open');
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        contactPopup.classList.remove('is-open');
-        document.body.style.overflow = '';
+        contactInlineMenu.classList.remove('is-open');
       }
     });
   }
