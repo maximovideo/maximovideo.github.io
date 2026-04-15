@@ -184,6 +184,33 @@
       transition: 0.2s ease;
     }
 
+    .contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #221d19;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  border-color: #5a4436;
+}
+
     .btn:hover {
       transform: translateY(-1px);
       border-color: #5a4436;
@@ -520,6 +547,29 @@
     }
   </style>
 </head>
+  <script>
+document.querySelectorAll('.email-copy').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const email = button.dataset.email;
+    const originalText = button.textContent;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      button.textContent = 'Скопировано';
+
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1500);
+    } catch {
+      button.textContent = 'Ошибка';
+
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1500);
+    }
+  });
+});
+</script>
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
@@ -552,6 +602,20 @@
         <a class="btn" href="#contacts">Обсудить задачу</a>
       </div>
     </div>
+    
+    <div class="contact-actions">
+  <a class="contact-btn telegram" href="https://t.me/maximovreels?direct" target="_blank">
+    Telegram
+  </a>
+
+  <button class="contact-btn email-copy" type="button" data-email="deftbuncase@gmail.com">
+    Email
+  </button>
+
+  <a class="contact-btn vk" href="https://vk.com/kvnwld" target="_blank">
+    VK
+  </a>
+</div>
 
     <div class="hero-card">
       <img src="avatar.jpg" alt="Фото Максима" />
