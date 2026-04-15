@@ -222,6 +222,101 @@
       border: none;
       box-shadow: 0 12px 26px rgba(247, 97, 14, 0.22);
     }
+    .contact-toggle {
+  cursor: pointer;
+}
+
+.contact-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 7, 0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.contact-popup.is-open {
+  display: flex;
+}
+
+.contact-popup-card {
+  width: min(100%, 360px);
+  background: linear-gradient(180deg, #241d19 0%, #1f1a16 100%);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.contact-popup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-popup-head strong {
+  font-size: 18px;
+  color: var(--text);
+}
+
+.contact-popup-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.contact-popup-links {
+  display: grid;
+  gap: 10px;
+}
+
+.contact-popup-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #221d19;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.contact-popup-btn:hover {
+  transform: translateY(-1px);
+  border-color: #5a4436;
+}
+
+@media (max-width: 640px) {
+  .contact-popup-card {
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .contact-popup-btn {
+    min-height: 46px;
+    font-size: 15px;
+  }
+}
 
     .hero-card {
       padding: 18px;
@@ -597,24 +692,48 @@ document.querySelectorAll('.email-copy').forEach((button) => {
         который выглядит дорого и выходит регулярно.
       </p>
 
-      <div class="actions">
-        <a class="btn primary" href="#cases">Посмотреть кейсы</a>
-        <a class="btn" href="#contacts">Обсудить задачу</a>
-      </div>
-    </div>
-    
-    <div class="contact-actions">
-  <a class="contact-btn telegram" href="https://t.me/maximovreels?direct" target="_blank">
-    Telegram
-  </a>
-
-  <button class="contact-btn email-copy" type="button" data-email="deftbuncase@gmail.com">
-    Email
+     <div class="actions">
+  <a class="btn primary" href="#cases">Посмотреть кейсы</a>
+  <button class="btn contact-toggle" type="button" id="openContactPopup">
+    Обсудить задачу
   </button>
+</div>
 
-  <a class="contact-btn vk" href="https://vk.com/kvnwld" target="_blank">
-    VK
-  </a>
+<div class="contact-popup" id="contactPopup">
+  <div class="contact-popup-card">
+    <div class="contact-popup-head">
+      <strong>Связаться</strong>
+      <button class="contact-popup-close" type="button" id="closeContactPopup">×</button>
+    </div>
+
+    <div class="contact-popup-links">
+      <a
+        class="contact-popup-btn"
+        href="https://t.me/maximovreels?direct"
+        target="_blank"
+        rel="noopener"
+      >
+        Telegram
+      </a>
+
+      <button
+        class="contact-popup-btn email-copy"
+        type="button"
+        data-email="deftbuncase@gmail.com"
+      >
+        Email
+      </button>
+
+      <a
+        class="contact-popup-btn"
+        href="https://vk.com/kvnwld"
+        target="_blank"
+        rel="noopener"
+      >
+        VK
+      </a>
+    </div>
+  </div>
 </div>
 
     <div class="hero-card">
@@ -988,6 +1107,60 @@ document.querySelectorAll('.email-copy').forEach((button) => {
       });
     });
   </script>
+
+  <script>
+  const contactPopup = document.getElementById('contactPopup');
+  const openContactPopup = document.getElementById('openContactPopup');
+  const closeContactPopup = document.getElementById('closeContactPopup');
+
+  if (openContactPopup && contactPopup && closeContactPopup) {
+    openContactPopup.addEventListener('click', () => {
+      contactPopup.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeContactPopup.addEventListener('click', () => {
+      contactPopup.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+
+    contactPopup.addEventListener('click', (e) => {
+      if (e.target === contactPopup) {
+        contactPopup.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        contactPopup.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  document.querySelectorAll('.email-copy').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const email = button.dataset.email;
+      const originalText = button.textContent;
+
+      try {
+        await navigator.clipboard.writeText(email);
+        button.textContent = 'Скопировано';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 1500);
+      } catch (error) {
+        button.textContent = 'Ошибка';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 1500);
+      }
+    });
+  });
+</script>
   
 </body>
 </html>
